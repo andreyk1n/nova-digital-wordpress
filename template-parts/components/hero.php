@@ -1,36 +1,71 @@
+<?php
+$label = get_sub_field('label');
+$title = get_sub_field('title');
+$description = get_sub_field('description');
+$buttons = get_sub_field('buttons');
+$items = get_sub_field('items');
+?>
+
 <section class="hero section" id="hero">
     <div class="container hero__container">
         <div class="hero__content reveal">
-            <div class="section__label">
-                Digital Marketing Agency
-            </div>
-            <h1 class="hero__title">
-                Grow Faster With
-                <span class="hero__title--gradient">Digital Marketing</span>
-                That Actually Works
-            </h1>
-            <p class="hero__description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi explicabo officiis illum neque. Lorem
-                ipsum dolor sit amet consectetur adipisicing elit.
-            </p>
-            <div class="hero__actions">
-                <a href="#contacts" class="button button--primary">Start Project</a>
-                <a href="#cases" class="button button--secondary">View Cases</a>
-            </div>
+            <?php if ($label): ?>
+                <div class="section__label">
+                    <?php echo $label; ?>
+                </div>
+            <?php endif; ?>
+            <?php if ($title): ?>
+                <h1 class="hero__title">
+                    <?php echo $title; ?>
+                </h1>
+            <?php endif; ?>
+            <?php if ($description): ?>
+                <p class="hero__description">
+                    <?php echo $description; ?>
+                </p>
+            <?php endif; ?>
+            <?php if ($buttons): ?>
+                <div class="hero__actions">
+                    <?php foreach ($buttons as $button):
+                        $button_text = $button['button_text'] ?? '';
+                        $button_href = $button['button_href'] ?? '';
+                        if (!$button_text || !$button_href) {
+                            continue;
+                        }
+                        ?>
+                        <a href="<?php echo esc_url($button_href); ?>"
+                            class="button <?php echo $button === reset($buttons) ? 'button--primary' : 'button--secondary'; ?>">
+                            <?php echo esc_html($button_text); ?>
+                        </a>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
         </div>
-        <div class="hero__visual reveal">
-            <article class="hero__card hero__card--analytics">
-                <div class="hero__card-title">Monthly Revenue</div>
-                <div class="hero__card-value">+248%</div>
-            </article>
-            <article class="hero__card hero__card--growth">
-                <div class="hero__card-title">Audience Growth</div>
-                <div class="hero__card-value">1.8M</div>
-            </article>
-            <article class="hero__card hero__card--campaign">
-                <div class="hero__card-title">Campaign Reach</div>
-                <div class="hero__card-value">5M+</div>
-            </article>
-        </div>
+        <?php if ($items): ?>
+            <div class="hero__visual reveal">
+                <?php foreach ($items as $index => $item):
+                    $item_title = $item['item_title'] ?? '';
+                    $item_num = $item['item_num'] ?? '';
+                    if (!$item_title || !$item_num) {
+                        continue;
+                    }
+                    $card_classes = [
+                        'hero__card--analytics',
+                        'hero__card--growth',
+                        'hero__card--campaign',
+                    ];
+                    $card_class = $card_classes[$index] ?? '';
+                    ?>
+                    <article class="hero__card <?php echo esc_attr($card_class); ?>">
+                        <div class="hero__card-title">
+                            <?php echo esc_html($item_title); ?>
+                        </div>
+                        <div class="hero__card-value">
+                            <?php echo esc_html($item_num); ?>
+                        </div>
+                    </article>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
     </div>
 </section>
