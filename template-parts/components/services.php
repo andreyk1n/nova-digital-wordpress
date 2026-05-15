@@ -36,19 +36,11 @@ $items = get_sub_field("items");
                     if (!$item_title) {
                         continue;
                     }
-                    $icon_url = '';
-                    $icon_alt = $item_title;
-                    if (is_array($item_icon)) {
-                        $icon_url = $item_icon['url'] ?? '';
-                        $icon_alt = $item_icon['alt'] ?? $item_title;
-                    } else {
-                        $icon_url = $item_icon;
-                    }
                     ?>
                     <article class="services__card reveal">
-                        <?php if ($icon_url): ?>
+                        <?php if ($item_icon): ?>
                             <div class="services__icon">
-                                <img src="<?php echo esc_url($icon_url); ?>" alt="<?php echo esc_attr($icon_alt); ?>"
+                                <img src="<?php echo esc_url($item_icon); ?>" alt="<?php echo esc_attr($item_title); ?>"
                                     loading="lazy">
                             </div>
                         <?php endif; ?>
