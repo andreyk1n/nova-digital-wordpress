@@ -1,2 +1,0 @@
-Novadigital wordpress theme
- 
