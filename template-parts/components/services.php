@@ -3,9 +3,6 @@ $label = get_sub_field("label");
 $title = get_sub_field("title");
 $description = get_sub_field("description");
 $items = get_sub_field("items");
-// item_icon
-// item_title
-// item_description
 ?>
 
 <section class="section services" id="services">

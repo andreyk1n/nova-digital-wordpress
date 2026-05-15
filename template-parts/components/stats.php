@@ -1,31 +1,42 @@
+<?php
+$label = get_sub_field("label");
+$title = get_sub_field("title");
+$description = get_sub_field("description");
+$items = get_sub_field("items");
+?>
+
 <section class="section stats">
     <div class="container">
         <div class="section__header reveal">
-            <div class="section__label">Results</div>
-            <h2 class="section__title">
-                Proven Performance That Speaks For Itself
-            </h2>
-            <p class="section__description">
-                We focus on measurable growth, real ROI and long-term brand impact across every campaign.
-            </p>
+            <?php if ($label): ?>
+                <div class="section__label">
+                    <?php echo $label; ?>
+                </div>
+            <?php endif; ?>
+            <?php if ($title): ?>
+                <h2 class="section__title">
+                    <?php echo $title; ?>
+                </h2>
+            <?php endif; ?>
+            <?php if ($description): ?>
+                <p class="section__description">
+                    <?php echo $description; ?>
+                </p>
+            <?php endif; ?>
         </div>
-        <div class="stats__grid">
-            <article class="stats-card reveal reveal--active">
-                <div class="stats-card__value">250+</div>
-                <p>Clients Worldwide</p>
-            </article>
-            <article class="stats-card reveal reveal--active">
-                <div class="stats-card__value">120%</div>
-                <p>Average ROI</p>
-            </article>
-            <article class="stats-card reveal reveal--active">
-                <div class="stats-card__value">5M+</div>
-                <p>Campaign Reach</p>
-            </article>
-            <article class="stats-card reveal reveal--active">
-                <div class="stats-card__value">10</div>
-                <p>Years Experience</p>
-            </article>
-        </div>
+        <?php if ($items): ?>
+            <div class="stats__grid">
+                <?php foreach ($items as $item): ?>
+                    <article class="stats-card reveal reveal--active">
+                        <div class="stats-card__value">
+                            <?php echo esc_html($item['item_num']); ?>
+                        </div>
+                        <p>
+                            <?php echo esc_html($item['item_title']); ?>
+                        </p>
+                    </article>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
     </div>
 </section>
