@@ -3,7 +3,6 @@ $label = get_sub_field("label");
 $title = get_sub_field("title");
 $description = get_sub_field("description");
 $items = get_sub_field("items");
-// item_url, item_title, item_description, item_image
 ?>
 
 <section class="section cases" id="cases">
@@ -30,10 +29,16 @@ $items = get_sub_field("items");
                 <?php foreach ($items as $item):
                     $image = $item['item_image'];
                     $url = $item['item_url'];
+                    $category = $item['item_category'];
                     ?>
                     <article class="cases__card reveal">
                         <div class="cases__image" style="background-image: url('<?php echo esc_url($image); ?>');"></div>
                         <div class="cases__content">
+                            <?php if ($category): ?>
+                                <div class="cases__category">
+                                    <?php echo $category; ?>
+                                </div>
+                            <?php endif; ?>
                             <h3 class="cases__title">
                                 <?php echo esc_html($item['item_title']); ?>
                             </h3>
