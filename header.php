@@ -51,7 +51,8 @@
 		rel="stylesheet">
 
 	<!-- Styles -->
-	<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>">
+	<link rel="stylesheet"
+		href="<?php echo get_stylesheet_uri(); ?>?v=<?php echo filemtime(get_stylesheet_directory() . '/style.css'); ?>">
 </head>
 
 <body <?php body_class(); ?>>
