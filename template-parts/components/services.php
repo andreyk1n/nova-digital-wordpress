@@ -1,57 +1,68 @@
+<?php
+$label = get_sub_field("label");
+$title = get_sub_field("title");
+$description = get_sub_field("description");
+$items = get_sub_field("items");
+// item_icon
+// item_title
+// item_description
+?>
+
 <section class="section services" id="services">
     <div class="container">
         <div class="section__header reveal">
-            <div class="section__label">Services</div>
-            <h2 class="section__title">
-                Full Digital Marketing Services
-            </h2>
-            <p class="section__description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam placeat aspernatur deserunt.
-            </p>
+            <?php if ($label): ?>
+                <div class="section__label">
+                    <?php echo $label; ?>
+                </div>
+            <?php endif; ?>
+            <?php if ($title): ?>
+                <h2 class="section__title">
+                    <?php echo $title; ?>
+                </h2>
+            <?php endif; ?>
+            <?php if ($description): ?>
+                <p class="section__description">
+                    <?php echo $description; ?>
+                </p>
+            <?php endif; ?>
         </div>
-        <div class="services__grid">
-            <article class="services__card reveal">
-                <div class="services__icon">↗</div>
-                <h3 class="services__title">SEO Marketing</h3>
-                <p class="services__description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </p>
-            </article>
-            <article class="services__card reveal">
-                <div class="services__icon">◎</div>
-                <h3 class="services__title">Social Media</h3>
-                <p class="services__description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </p>
-            </article>
-            <article class="services__card reveal">
-                <div class="services__icon">△</div>
-                <h3 class="services__title">Performance Ads</h3>
-                <p class="services__description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </p>
-            </article>
-            <article class="services__card reveal">
-                <div class="services__icon">✦</div>
-                <h3 class="services__title">Branding</h3>
-                <p class="services__description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </p>
-            </article>
-            <article class="services__card reveal">
-                <div class="services__icon">◉</div>
-                <h3 class="services__title">Web Design</h3>
-                <p class="services__description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </p>
-            </article>
-            <article class="services__card reveal">
-                <div class="services__icon">✸</div>
-                <h3 class="services__title">Analytics</h3>
-                <p class="services__description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </p>
-            </article>
-        </div>
+        <?php if ($items): ?>
+            <div class="services__grid">
+                <?php foreach ($items as $item):
+                    $item_icon = $item['item_icon'] ?? '';
+                    $item_title = $item['item_title'] ?? '';
+                    $item_description = $item['item_description'] ?? '';
+                    if (!$item_title) {
+                        continue;
+                    }
+                    $icon_url = '';
+                    $icon_alt = $item_title;
+                    if (is_array($item_icon)) {
+                        $icon_url = $item_icon['url'] ?? '';
+                        $icon_alt = $item_icon['alt'] ?? $item_title;
+                    } else {
+                        $icon_url = $item_icon;
+                    }
+                    ?>
+                    <article class="services__card reveal">
+                        <?php if ($icon_url): ?>
+                            <div class="services__icon">
+                                <img src="<?php echo esc_url($icon_url); ?>" alt="<?php echo esc_attr($icon_alt); ?>"
+                                    loading="lazy">
+                            </div>
+                        <?php endif; ?>
+                        <h3 class="services__title">
+                            <?php echo esc_html($item_title); ?>
+                        </h3>
+                        <?php if ($item_description): ?>
+                            <p class="services__description">
+                                <?php echo esc_html($item_description); ?>
+                            </p>
+                        <?php endif; ?>
+                    </article>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
     </div>
 </section>
