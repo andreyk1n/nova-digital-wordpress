@@ -24,7 +24,6 @@ $items = get_sub_field("items");
                 </p>
             <?php endif; ?>
         </div>
-        <?php $items = get_sub_field("items"); ?>
         <?php if ($items): ?>
             <div class="process__timeline">
                 <?php foreach ($items as $index => $item): ?>

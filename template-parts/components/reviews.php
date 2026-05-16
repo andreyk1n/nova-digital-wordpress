@@ -1,51 +1,53 @@
+<?php
+$label = get_sub_field("label");
+$title = get_sub_field("title");
+$description = get_sub_field("description");
+$items = get_sub_field("items");
+?>
+
 <section class="section reviews" id="reviews">
     <div class="container">
         <div class="section__header reveal">
-            <div class="section__label">Testimonials</div>
-            <h2 class="section__title">
-                Clients Love Working With Us
-            </h2>
+            <?php if ($label): ?>
+                <div class="section__label">
+                    <?php echo $label; ?>
+                </div>
+            <?php endif; ?>
+            <?php if ($title): ?>
+                <h2 class="section__title">
+                    <?php echo $title; ?>
+                </h2>
+            <?php endif; ?>
+            <?php if ($description): ?>
+                <p class="section__description">
+                    <?php echo $description; ?>
+                </p>
+            <?php endif; ?>
         </div>
-        <div class="reviews__grid">
-            <article class="reviews__card reveal">
-                <div class="reviews__rating">★★★★★</div>
-                <p class="reviews__text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, illo...
-                </p>
-                <div class="reviews__author">
-                    <div class="reviews__avatar"></div>
-                    <div>
-                        <strong>Alex Morgan</strong>
-                        <p>CEO Founder</p>
-                    </div>
-                </div>
-            </article>
-            <article class="reviews__card reveal">
-                <div class="reviews__rating">★★★★★</div>
-                <p class="reviews__text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, illo...
-                </p>
-                <div class="reviews__author">
-                    <div class="reviews__avatar"></div>
-                    <div>
-                        <strong>Emma Carter</strong>
-                        <p>Marketing Lead</p>
-                    </div>
-                </div>
-            </article>
-            <article class="reviews__card reveal">
-                <div class="reviews__rating">★★★★★</div>
-                <p class="reviews__text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, illo...
-                </p>
-                <div class="reviews__author">
-                    <div class="reviews__avatar"></div>
-                    <div>
-                        <strong>Daniel Scott</strong>
-                        <p>Startup Founder</p>
-                    </div>
-                </div>
-            </article>
-        </div>
+        <?php if ($items): ?>
+            <div class="reviews__grid">
+                <?php foreach ($items as $item): ?>
+                    <article class="reviews__card reveal">
+                        <div class="reviews__rating">
+                            <?php echo esc_html($item['item_rating']); ?>
+                        </div>
+                        <p class="reviews__text">
+                            <?php echo esc_html($item['item_text']); ?>
+                        </p>
+                        <div class="reviews__author">
+                            <div class="reviews__avatar"></div>
+                            <div>
+                                <strong>
+                                    <?php echo esc_html($item['item_name']); ?>
+                                </strong>
+                                <p>
+                                    <?php echo esc_html($item['item_position']); ?>
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
     </div>
 </section>
