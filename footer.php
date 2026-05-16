@@ -3,7 +3,6 @@
 	<?php $footer_description = get_field('footer_description', 'option'); ?>
 	<?php $footer_label = get_field('footer_label', 'option'); ?>
 	<?php $footer_copyright = get_field('footer_copyright', 'option'); ?>
-	<?php $footer_socials = get_field('footer_socials', 'option'); ?>
 	<div class="container">
 		<div class="footer__top">
 			<div>
