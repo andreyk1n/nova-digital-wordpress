@@ -8,31 +8,7 @@
 					Creative digital marketing agency focused on growth, branding and performance.
 				</p>
 			</div>
-			<div class="footer__nav">
-				<div>
-					<h3 class="footer__column-title">Navigation</h3>
-					<ul class="footer__list">
-						<li><a href="#about">About</a></li>
-						<li><a href="#services">Services</a></li>
-						<li><a href="#cases">Cases</a></li>
-					</ul>
-				</div>
-				<div>
-					<ul class="footer__list">
-						<li><a href="#process">Process</a></li>
-						<li><a href="#reviews">Testimonials</a></li>
-						<li><a href="#contacts">Contacts</a></li>
-					</ul>
-				</div>
-				<div>
-					<h3 class="footer__column-title">Social</h3>
-					<ul class="footer__list">
-						<li><a href="#">Instagram</a></li>
-						<li><a href="#">LinkedIn</a></li>
-						<li><a href="#">Behance</a></li>
-					</ul>
-				</div>
-			</div>
+			<?php get_template_part('template-parts/partials/footer-nav'); ?>
 		</div>
 		<div class="footer__bottom">
 			<p>© 2026 Nova Digital. All rights reserved.</p>
@@ -41,7 +17,8 @@
 	</div>
 </footer>
 
-<script src="<?php echo get_template_directory_uri(); ?>/js/script.js?v=<?php echo filemtime(get_template_directory() . '/js/script.js'); ?>"></script>
+<script
+	src="<?php echo get_template_directory_uri(); ?>/js/script.js?v=<?php echo filemtime(get_template_directory() . '/js/script.js'); ?>"></script>
 
 <?php wp_footer(); ?>
 
