@@ -4,8 +4,9 @@
 <body <?php body_class(); ?>>
 	<?php wp_body_open(); ?>
 	<header class="header">
+		<?php $logo = get_field('logo', 'option'); ?>
 		<div class="container header__container">
-			<a href="#hero" class="header__logo">Nova Digital</a>
+			<a href="#hero" class="header__logo"><?php echo $logo; ?></a>
 			<nav class="header__nav nav" aria-label="Main navigation">
 				<ul class="nav__list">
 					<li class="nav__item"><a class="nav__link" href="#about">About us</a></li>

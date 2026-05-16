@@ -1,8 +1,9 @@
 <footer class="footer">
+	<?php $logo = get_field('logo', 'option'); ?>
 	<div class="container">
 		<div class="footer__top">
 			<div>
-				<div class="footer__logo">Nova Digital</div>
+				<div class="footer__logo"><?php echo $logo; ?></div>
 				<p class="footer__description">
 					Creative digital marketing agency focused on growth, branding and performance.
 				</p>
