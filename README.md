@@ -96,6 +96,10 @@ WPvivid Backup → Backup & Restore
 - Не використовуються page builders
 - Підходить для швидкого запуску проектів і кастомізації
 
+## Креди до адмінки
+- user
+- 123454321
+
 ---
 
 ---
@@ -194,3 +198,7 @@ You can easily edit:
 - Designed for landing pages and marketing websites
 - No page builders used
 - Ideal for fast deployment and easy customization
+
+## Credentials
+- user
+- 123454321
